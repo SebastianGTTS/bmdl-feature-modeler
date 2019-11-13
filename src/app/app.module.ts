@@ -15,7 +15,6 @@ import { FeatureBuildingBlockComponent } from './feature-building-block/feature-
 import { BusinessModelViewComponent } from './business-model-view/business-model-view.component';
 import { CanvasBuildingBlockComponent } from './canvas-building-block/canvas-building-block.component';
 import { ToolExplanationComponent } from './tool-explanation/tool-explanation.component';
-import { ImportExportManagerComponent } from './import-export-manager/import-export-manager.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -29,7 +28,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BusinessModelViewComponent,
     CanvasBuildingBlockComponent,
     ToolExplanationComponent,
-    ImportExportManagerComponent
   ],
   imports: [
     BrowserModule,
