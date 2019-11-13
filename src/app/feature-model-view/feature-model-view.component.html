@@ -1,0 +1,120 @@
+<div class="nav-scroller bg-white shadow-sm">
+    <nav class="nav nav-underline">
+        <a class="nav-link active" href="#">{{featureModel.name}}</a>
+        <a *ngFor="let bm of businessModelList" class="nav-link"
+        [routerLink]="['/businessmodelview', featureModel._id, bm.id]">{{bm.name}}</a>
+    </nav>
+</div>
+
+<main role="main" class="container">
+    <!-- List Features -->
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Feature Model of {{featureModel.name}}</h6>
+
+        <div *ngIf="featureModel" class="container businesscanvas">
+            <div class="row">
+                <div class="col-2 buildingblock brectangle">
+                    <app-feature-building-block [doubleBlock]="false" [features]="featureModel.features[4].features"
+                        [buildingBlockName]="'Key Partners'"></app-feature-building-block>
+                </div>
+                <div class="col-3">
+
+                    <div class="row">
+                        <div class="col-md-12 buildingblock bsquare">
+                            <app-feature-building-block [doubleBlock]="false"
+                                [features]="featureModel.features[5].features" [buildingBlockName]="'Key Activities'">
+                            </app-feature-building-block>
+                        </div>
+                        <div class="col-md-12 buildingblock bsquare">
+                            <app-feature-building-block [doubleBlock]="false"
+                                [features]="featureModel.features[6].features" [buildingBlockName]="'Key Resources'">
+                            </app-feature-building-block>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 buildingblock">
+                    <app-feature-building-block [doubleBlock]="false" [features]="featureModel.features[0].features"
+                        [buildingBlockName]="'Value Propositions'"></app-feature-building-block>
+                </div>
+                <div class="col-3">
+                    <div class="row">
+                        <div class="col-md-12 buildingblock bsquare">
+                            <app-feature-building-block [doubleBlock]="false"
+                                [features]="featureModel.features[2].features"
+                                [buildingBlockName]="'Customer Relationships'"></app-feature-building-block>
+                        </div>
+                        <div class="col-md-12 buildingblock bsquare">
+                            <app-feature-building-block [doubleBlock]="false"
+                                [features]="featureModel.features[3].features"
+                                [buildingBlockName]="'Customer Channels'"></app-feature-building-block>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 buildingblock brectangle">
+                    <app-feature-building-block [doubleBlock]="false" [features]="featureModel.features[1].features"
+                        [buildingBlockName]="'Customer Segments'"></app-feature-building-block>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 buildingblock blongtangle">
+                    <app-feature-building-block [doubleBlock]="true" [features]="featureModel.features[8].features"
+                        [buildingBlockName]="'Cost Structure'"></app-feature-building-block>
+                </div>
+                <div class="col-6 buildingblock blongtangle">
+                    <app-feature-building-block [doubleBlock]="true" [features]="featureModel.features[7].features"
+                        [buildingBlockName]="'Revenue Streams'"></app-feature-building-block>
+                </div>
+            </div>
+
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-4"><strong>Legend:</strong></div>
+                <div class="col-4"><i class="fa fa-circle"></i> Mandatory Feature</div>
+                <div class="col-4"><i class="fa fa-circle-o"></i> Optional Feature</div>
+            </div>
+           
+            <div class="row" style="margin-top:20px;">
+                <button type="button" [routerLink]="['/featuremodel', featureModelId]" class="btn btn-sm btn-dark btn-lg btn-block">View Complete Feature Model</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- View business Models -->
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Derived Business Models</h6>
+
+        <ul *ngIf="businessModelList" class="list-group inner" style="margin:5px;">
+
+            <li *ngFor="let bm of businessModelList" class="list-group-item justify-content-between align-items-center">
+
+                {{ bm.name }}
+                <button (click)="viewBusinessModel(bm.id)" type="button"
+                    class="btn btn-dark btn-xs bottom-right-two">View</button>
+                <button (click)="deleteBusinessModel(bm.id)" type="button"
+                    class="btn btn-danger btn-xs bottom-right">Delete</button>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Add Business Model -->
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Add Business Model</h6>
+        <div class="text-muted pt-3">
+            <form [formGroup]="businessModelForm" (ngSubmit)="addBusinessModel()">
+                <div class="form-group row">
+                    <label for="name" class="col-sm-4 col-form-label">Model Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" formControlName="name" class="form-control" id="name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-sm btn-dark btn-block" [disabled]="!businessModelForm.valid">Add
+                            Business Model</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

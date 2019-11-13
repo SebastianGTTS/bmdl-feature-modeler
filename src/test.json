@@ -1,0 +1,217 @@
+{
+    "_id": "11414ded84b977cd71fba225390088f5",
+    "_rev": "1-e97b77b48228518a59e2094c1ebf632a",
+    "name": "BMDL Modeling Example",
+
+    "features": [
+        {
+            "id": 1,
+            "name": "Value Proposition",
+            "isMandatory": false,
+            "hasOrSubfeature": false,
+            "hasXOrSubfeatures": false,
+            "isDeletable": false,
+            "features": [
+                {
+                    "id": 10,
+                    "name": "Money-Back Guarantee",
+                    "isMandatory": false,
+                    "hasOrSubfeature": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyTo": [
+                        17
+                    ],
+                    "requiringDependencyFrom": [],
+                    "excludingDependency": [
+                        16
+                    ]
+                },
+                {
+                    "id": 11,
+                    "name": "Cancel Anytime",
+                    "isMandatory": false,
+                    "hasOrSubfeature": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyTo": [
+                        18
+                    ],
+                    "requiringDependencyFrom": [],
+                    "excludingDependency": [
+                        16
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Customer Segments",
+            "isMandatory": false,
+            "hasOrSubfeature": false,
+            "hasXOrSubfeatures": false,
+            "isDeletable": false,
+            "features": [
+                {
+                    "id": 12,
+                    "name": "Flatrate User",
+                    "isMandatory": false,
+                    "hasOrSubfeature": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyTo": [
+                        14
+                    ],
+                    "requiringDependencyFrom": [],
+                    "excludingDependency": []
+                },
+                {
+                    "id": 13,
+                    "name": "Movie Lovers",
+                    "isMandatory": false,
+                    "hasOrSubfeature": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyTo": [
+                        15
+                    ],
+                    "requiringDependencyFrom": [],
+                    "excludingDependency": []
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Customer Relationships",
+            "isMandatory": false,
+            "hasOrSubfeature": false,
+            "hasXOrSubfeatures": false,
+            "isDeletable": false,
+            "features": [ ]
+        },
+        {
+            "id": 4,
+            "name": "Customer Channel",
+            "isMandatory": false,
+            "hasOrSubfeature": false,
+            "hasXOrSubfeatures": false,
+            "isDeletable": false,
+            "features": [
+                {
+                    "id": 14,
+                    "name": "TV Advertisement",
+                    "isMandatory": false,
+                    "hasOrSubfeature": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [
+                        12
+                    ],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": []
+                },
+                {
+                    "id": 15,
+                    "name": "Cinema Advertisement",
+                    "isMandatory": false,
+                    "hasOrSubfeature": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [
+                        13
+                    ],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": []
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Key Partners",
+            "isMandatory": false,
+            "hasOrSubfeature": false,
+            "hasXOrSubfeatures": false,
+            "isDeletable": false,
+            "features": [ ]
+        },
+        {
+            "id": 6,
+            "name": "Key Activities",
+            "isMandatory": false,
+            "hasOrSubfeature": false,
+            "hasXOrSubfeatures": false,
+            "isDeletable": false,
+            "features": [ ]
+        },
+        {
+            "id": 7,
+            "name": "Key Resources",
+            "isMandatory": false,
+            "hasOrSubfeature": false,
+            "hasXOrSubfeatures": false,
+            "isDeletable": false,
+            "features": [ ]
+        },
+        {
+            "id": 8,
+            "name": "Revenue Streams",
+            "isMandatory": false,
+            "hasOrSubfeature": false,
+            "hasXOrSubfeatures": false,
+            "isDeletable": false,
+            "features": [
+                {
+                    "id": 16,
+                    "name": "Personalized Advertisements",
+                    "isMandatory": false,
+                    "hasOrSubfeature": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "excludingDependency": [
+                        10,
+                        18
+                    ],
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": []
+                },
+                {
+                    "id": 17,
+                    "name": "Single Movie Purchase",
+                    "isMandatory": true,
+                    "hasOrSubfeature": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [
+                        10
+                    ],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": []
+                },
+                {
+                    "id": 18,
+                    "belongsTo": "RS",
+                    "name": "Membership",
+                    "isMandatory": false,
+                    "hasOrSubfeature": false,
+                    "hasXOrSubfeatures": false,
+                    "requiringDependencyFrom": [
+                        11
+                    ],
+                    "excludingDependency": [
+                        16
+                    ],
+                    "requiringDependencyTo": []
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "name": "Cost Structure",
+            "isMandatory": false,
+            "hasOrSubfeature": false,
+            "hasXOrSubfeatures": false,
+            "isDeletable": false,
+            "features": [ ]
+        }
+    ]
+}

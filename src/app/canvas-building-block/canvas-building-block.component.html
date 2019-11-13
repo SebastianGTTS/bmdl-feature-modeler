@@ -1,0 +1,25 @@
+
+
+<ul [ngClass]="levelDepth == 1 ? 'no-list': ''" class="list-group" style="margin-top: 5px; margin-left:5px;">
+        <li *ngIf="includes(feature.businessModelIds,businessModelId)"><strong *ngIf="levelDepth == 1" [ngClass]="includes(conformanceProblemFeatureIdList, feature.id) ? 'text-danger' : ''">{{feature.name}}</strong> <span *ngIf="levelDepth != 1" [ngClass]="includes(conformanceProblemFeatureIdList, feature.id) ? 'text-danger' : ''">{{feature.name}}</span>&nbsp; <i class="fas fa-plus-square" (click)="addFeature(feature.id)"> </i>&nbsp;<i class="fas fa-minus-square" *ngIf="feature.isDeletable" (click)="deleteFeature(feature.id)"> </i>
+            <span  *ngFor="let f of feature.features">
+                    <app-canvas-building-block [doubleBlock]="doubleBlock" [feature]="f"
+                        [businessModelId]="businessModelId" *ngIf="includes(f.businessModelIds,businessModelId) || includes(conformanceProblemFeatureIdList,f.id)" [levelDepth]="levelDepth + 1"
+                        [conformanceProblemFeatureIdList]="conformanceProblemFeatureIdList"
+                        (addFeatureEmitter)="addFeatureForwardEmitter($event)"
+                        (deleteFeatureEmitter)="deleteFeatureForwardEmitter($event)"></app-canvas-building-block>
+                    </span>
+            <!--
+            <div class="list-group d-flex flex-row flex-wrap">
+                <span *ngFor="let f of feature.features">
+                <a  *ngIf="includes(f.businessModelIds,businessModelId)" style="width:100%;margin-top: 5px;padding:7px;" [ngClass]="doubleBlock ? 'w-50' : 'w-100'"
+                    class="list-group-item list-group-item-action"> 
+            
+                    {{f.name}}
+                    <a  *ngIf="includes(f.businessModelIds,businessModelId)" style="margin-top: 5px;padding:7px;" [ngClass]="doubleBlock ? 'w-50' : 'w-100'"
+                    class="list-group-item list-group-item-action"> Test </a>
+                </a></span>
+            </div>-->
+        </li>
+        <li *ngIf="!includes(feature.businessModelIds,businessModelId)"><em class="text-danger">{{feature.name}}</em></li>
+    </ul>

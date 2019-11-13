@@ -1,0 +1,213 @@
+<div class="nav-scroller bg-white shadow-sm">
+    <nav class="nav nav-underline">
+        <a class="nav-link" [routerLink]="['/featuremodelview', featureModel._id]">{{featureModel.name}}</a>
+        <a class="nav-link active"
+            [routerLink]="['/businessmodelview', featureModel._id, businessModelId]">{{businessModelName}}</a>
+
+    </nav>
+</div>
+
+<ng-template #deleteModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{modalFeature.name}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-warning" role="alert">
+            <p>You are trying to remove the decision "{{modalFeature.name}}". Please keep in mind that you are removing
+                also all subdecisions.</p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-block btn-warning"
+            (click)="deleteBusinessModelDecision(modalFeature.id)">Delete
+            Decision</button>
+    </div>
+</ng-template>
+
+<ng-template #addModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{modalFeature.name}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <ul class="list-group inner" style="margin:5px;">
+            <li class="list-group-item justify-content-between align-items-center"><i class="fas fa-plus-square"></i>
+                Add existing business model decisions:
+                <ul class="list-group inner" style="margin:5px;">
+                    <li class="list-group-item justify-content-between align-items-center"
+                        *ngFor=" let f  of modalUnselectedFeatures">{{f.name}}
+                        <button (click)="addBusinessModelDecision(f.id)" type="button"
+                            class="btn btn-warning btn-xs bottom-right">Add</button>
+
+                    </li>
+                    <li class="list-group-item justify-content-between align-items-center"
+                        *ngIf="modalUnselectedFeatures.length == 0">There are no existing business model decisions left
+                        to add. </li>
+                </ul>
+            </li>
+            <li class="list-group-item justify-content-between align-items-center"><i class="fas fa-plus-square"></i>
+                Add new business model decision:
+                <ul class="list-group inner" style="margin:5px;">
+                    <li class="list-group-item justify-content-between align-items-center">
+                        <form [formGroup]="addFeatureForm" (ngSubmit)="addFeature()" class="form-inline">
+                            <label class="sr-only" for="featurename">Decision Name</label>
+                            <input type="text" formControlName="featurename" class="form-control mb-2 mr-sm-2"
+                                id="featurename">
+                            <button type="submit" class="btn btn-warning btn-xs bottom-right">Add</button>
+
+                        </form>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</ng-template>
+
+<main role="main" class="container">
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">{{businessModelName}} of {{featureModel.name}}</h6>
+
+        <!-- Build Business Model Canvas -->
+        <div *ngIf="featureModel" class="container businesscanvas">
+            <div class="row">
+                <div class="col-2 buildingblock brectangle">
+                    <app-canvas-building-block [doubleBlock]="false" [feature]="featureModel.features[4]"
+                        [businessModelId]="businessModelId" [levelDepth]="1"
+                        [conformanceProblemFeatureIdList]="conformanceProblemFeatureIds"
+                        (addFeatureEmitter)="addFeatureModal($event)"
+                        (deleteFeatureEmitter)="deleteFeatureModal($event)"></app-canvas-building-block>
+                </div>
+                <div class="col-3">
+
+                    <div class="row">
+                        <div class="col-md-12 buildingblock bsquare">
+                            <app-canvas-building-block [doubleBlock]="false" [feature]="featureModel.features[5]"
+                                [businessModelId]="businessModelId" [levelDepth]="1"
+                                [conformanceProblemFeatureIdList]="conformanceProblemFeatureIds"
+                                (addFeatureEmitter)="addFeatureModal($event)"
+                                (deleteFeatureEmitter)="deleteFeatureModal($event)"></app-canvas-building-block>
+                        </div>
+                        <div class="col-md-12 buildingblock bsquare">
+                            <app-canvas-building-block [doubleBlock]="false" [feature]="featureModel.features[6]"
+                                [businessModelId]="businessModelId" [levelDepth]="1"
+                                [conformanceProblemFeatureIdList]="conformanceProblemFeatureIds"
+                                (addFeatureEmitter)="addFeatureModal($event)"
+                                (deleteFeatureEmitter)="deleteFeatureModal($event)"></app-canvas-building-block>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 buildingblock">
+                    <app-canvas-building-block [doubleBlock]="false" [feature]="featureModel.features[0]"
+                        [businessModelId]="businessModelId" [levelDepth]="1"
+                        [conformanceProblemFeatureIdList]="conformanceProblemFeatureIds"
+                        (addFeatureEmitter)="addFeatureModal($event)"
+                        (deleteFeatureEmitter)="deleteFeatureModal($event)"></app-canvas-building-block>
+                </div>
+                <div class="col-3">
+                    <div class="row">
+                        <div class="col-md-12 buildingblock bsquare">
+                            <app-canvas-building-block [doubleBlock]="false" [feature]="featureModel.features[2]"
+                                [businessModelId]="businessModelId" [levelDepth]="1"
+                                [conformanceProblemFeatureIdList]="conformanceProblemFeatureIds"
+                                (addFeatureEmitter)="addFeatureModal($event)"
+                                (deleteFeatureEmitter)="deleteFeatureModal($event)"></app-canvas-building-block>
+                        </div>
+                        <div class="col-md-12 buildingblock bsquare">
+                            <app-canvas-building-block [doubleBlock]="false" [feature]="featureModel.features[3]"
+                                [businessModelId]="businessModelId" [levelDepth]="1"
+                                [conformanceProblemFeatureIdList]="conformanceProblemFeatureIds"
+                                (addFeatureEmitter)="addFeatureModal($event)"
+                                (deleteFeatureEmitter)="deleteFeatureModal($event)"></app-canvas-building-block>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 buildingblock brectangle">
+                    <app-canvas-building-block [doubleBlock]="false" [feature]="featureModel.features[1]"
+                        [businessModelId]="businessModelId" [levelDepth]="1"
+                        [conformanceProblemFeatureIdList]="conformanceProblemFeatureIds"
+                        (addFeatureEmitter)="addFeatureModal($event)"
+                        (deleteFeatureEmitter)="deleteFeatureModal($event)"></app-canvas-building-block>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 buildingblock blongtangle">
+                    <app-canvas-building-block [doubleBlock]="false" [feature]="featureModel.features[8]"
+                        [businessModelId]="businessModelId" [levelDepth]="1"
+                        [conformanceProblemFeatureIdList]="conformanceProblemFeatureIds"
+                        (addFeatureEmitter)="addFeatureModal($event)"
+                        (deleteFeatureEmitter)="deleteFeatureModal($event)"></app-canvas-building-block>
+                </div>
+                <div class="col-6 buildingblock blongtangle">
+                    <app-canvas-building-block [doubleBlock]="false" [feature]="featureModel.features[7]"
+                        [businessModelId]="businessModelId" [levelDepth]="1"
+                        [conformanceProblemFeatureIdList]="conformanceProblemFeatureIds"
+                        (addFeatureEmitter)="addFeatureModal($event)"
+                        (deleteFeatureEmitter)="deleteFeatureModal($event)"></app-canvas-building-block>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-2"><strong>Legend:</strong></div>
+                <div class="col-2">Modification:</div>
+                <div class="col-4"><i class="fas fa-plus-square"></i> Add Business Model Decision</div>
+                <div class="col-4"><i class="fas fa-minus-square"></i> Delete Business Model Decision</div>
+            </div>
+            <div class="row" *ngIf="conformanceIsChecked">
+                <div class="col-2">&nbsp;</div>
+                <div class="col-2">Conformance:</div>
+                <div class="col-4"><span class="text-danger">Conformance Error (see below)</span></div>
+                <div class="col-4"><em class="text-danger">Missing Mandatory Decision</em></div>
+            </div>
+        </div>
+    </div>
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Conformance Check</h6>
+        <div class="container">
+            <div class="row" style="margin-top:20px;">
+                <button type="button" *ngIf="!conformanceIsChecked" (click)="checkConformance()"
+                    class="btn btn-dark btn-sm btn-block">
+                    Activate Conformance Checking of Business Model
+                </button>
+                <button type="button" *ngIf="conformanceIsChecked" (click)="uncheckConformance()"
+                    class="btn btn-dark btn-sm btn-block">
+                    Deactivate Conformance Checking of Business Model
+                </button>
+            </div>
+            <div *ngIf="conformanceIsChecked" class="row" style="margin-top:20px;">
+                <ul>
+                    <li *ngFor="let error of conformanceProblemErrors">{{error}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Update Business Model</h6>
+
+        <div class="text-muted pt-3">
+            <form [formGroup]="updateBusinessModelForm" (ngSubmit)="updateBusinessModel()">
+                <div class="form-group row">
+                    <label for="name" class="col-sm-4 col-form-label">Business Model Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" formControlName="name" class="form-control" id="name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-sm btn-dark btn-block"
+                            [disabled]="!updateBusinessModelForm.valid">Update Business Model Name</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

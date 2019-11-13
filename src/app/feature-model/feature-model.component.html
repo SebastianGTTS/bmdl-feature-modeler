@@ -1,0 +1,83 @@
+<div class="nav-scroller bg-white shadow-sm">
+    <nav class="nav nav-underline">
+        <a class="nav-link active" href="#">Feature Models</a>
+        <a *ngFor="let fm of featureModelList" class="nav-link"
+            routerLink="/featuremodel/{{fm._id}}">{{fm.name}}</a>
+    </nav>
+</div>
+
+<main role="main" class="container">
+    <!--Short Tool Explanation-->
+    <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
+        <img class="mr-3" src="assets/logo.svg" alt="" width="48" height="48">
+        <div class="lh-100">
+            <h6 class="mb-0 text-white lh-100">BMDL Feature Modeler</h6>
+            <small>Describe Business Models through a Business Model Decision Line (BMDL) by using Feature Models</small>
+        </div>
+    </div>
+
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Short introduction</h6>
+        <div class="text-muted pt-3">
+            <p>The BMDL Feature Modeler is a tool to describe Business Models through a combination of the Business Model Canvas (BMC) and a Software Product Line (SPL). We call this concept Business Model Decision Line (BMDL), where each feature describes a single business model decision. Features can be ordered in hierarchies and marked as mandatory or optional for the business models. Moreover, there can be Or (at least one sub-feature is selected) and Alternate (exactly one sub-feature is selected) relationships between a parent and a child feature. To refine the business models, cross-tree constraints for requiring and excluding dependencies can be made.</p> 
+
+            <p>The current state of the tool allows the creation of feature models and the deriving of business models. New business model decisions of single business models are synchronized with the corresponding feature model to ensure consistency. Moreover, the conformance of business models can be checked with the feature model and occurring conformance errors are explained.</p>
+        
+            <button type="button" routerLink="/explanation" class="btn btn-dark btn-sm btn-block">View Full Tool Explanation</button>    
+        </div>
+    </div>
+
+    <!-- List Feature Models -->
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">List of Feature Models</h6>
+        <div *ngFor="let fm of featureModelList" class="media text-muted pt-3">
+            <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#6f42c1" /><rect x="50%" y="50%" fill="#007bff"
+                    />
+            </svg>
+
+            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <div class="d-flex justify-content-between align-items-center ">
+                    <strong (click)="viewFeatureModel(fm._id)" class="text-gray-dark">{{fm.name}}</strong>
+                    <span>
+                            <button (click)="viewFeatureModel(fm._id)" type="button" class="btn btn-dark btn-xs">View</button> &nbsp; 
+                            <button (click)="editFeatureModel(fm._id)" type="button" class="btn btn-warning btn-xs">Edit</button>  &nbsp; 
+                            <button (click)="deleteFeatureModel(fm._id)" type="button" class="btn btn-danger btn-xs">Delete</button>
+
+                    </span>
+
+                </div>
+                <span class="d-block">{{fm.description}}</span>
+            </div>
+        </div>
+        <button type="button" (click)="resetDatabase()" class="btn btn-dark btn-sm btn-block">Reset Database to Default</button>    
+    </div>
+
+    <!-- Add Feature Model -->
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Add Feature Model</h6>
+        <div class="text-muted pt-3">
+            <form [formGroup]="featureModelForm" (ngSubmit)="addFeatureModel()">
+                <div class="form-group row">
+                    <label for="name" class="col-sm-4 col-form-label">Model Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" formControlName="name" class="form-control" id="name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="description" class="col-sm-4 col-form-label">Model Description</label>
+                    <div class="col-sm-8">
+                        <input type="text" formControlName="description" class="form-control" id="description">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-sm btn-dark btn-block" [disabled]="!featureModelForm.valid">Add Feature Model</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

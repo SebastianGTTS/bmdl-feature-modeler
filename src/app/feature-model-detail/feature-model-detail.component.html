@@ -1,0 +1,317 @@
+<ng-template #deleteModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{modalFeature.name}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-warning" role="alert">
+            <p>You are trying to remove the feature "{{modalFeature.name}}". Please keep in mind that you are removing
+                also all subfeatures together with the corresponding dependencies.</p>
+            <p>Moreover, the feature is also removed from all business canvases.</p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-block btn-warning" (click)="deleteFeature(modalFeature.id)">Delete
+            Feature</button>
+    </div>
+</ng-template>
+
+<ng-template #dependencyModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{modalFeature.name}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div *ngIf="modalFeature.requiringDependencyTo.length == 0 && modalFeature.requiringDependencyFrom.length == 0 && modalFeature.excludingDependency.length == 0"
+            class="alert alert-info" role="alert">
+            <p>There are no dependencies left to remove.</p>
+        </div>
+
+        <ul class="list-group inner" style="margin:5px;">
+            <li class="list-group-item justify-content-between align-items-center"
+                *ngIf="modalFeature.requiringDependencyTo.length != 0"><i class="fa fa-arrow-right"></i> Requires:
+                <ul class="list-group inner" style="margin:5px;">
+                    <li class="list-group-item justify-content-between align-items-center"
+                        *ngFor=" let mf  of modalFeature.requiringDependencyTo">{{featureModel.featureMap[mf]}}
+                        <button (click)="deleteDependency('requiringDependencyTo', modalFeature.id, mf)" type="button"
+                            class="btn btn-warning btn-xs bottom-right">Delete</button>
+
+                    </li>
+                </ul>
+            </li>
+            <li class="list-group-item justify-content-between align-items-center"
+                *ngIf="modalFeature.requiringDependencyFrom.length != 0"><i class="fa fa-arrow-left"></i> Required by:
+                <ul class="list-group inner" style="margin:5px;">
+                    <li class="list-group-item justify-content-between align-items-center"
+                        *ngFor=" let mf  of modalFeature.requiringDependencyFrom">{{featureModel.featureMap[mf]}}
+                        <button (click)="deleteDependency('requiringDependencyFrom', modalFeature.id, mf)" type="button"
+                            class="btn btn-warning btn-xs bottom-right">Delete</button>
+
+                    </li>
+                </ul>
+            </li>
+            <li class="list-group-item justify-content-between align-items-center"
+                *ngIf="modalFeature.excludingDependency.length != 0"><i class="fa fa-arrows-alt-h"></i> Excludes:
+                <ul class="list-group inner" style="margin:5px;">
+                    <li class="list-group-item justify-content-between align-items-center"
+                        *ngFor=" let mf  of modalFeature.excludingDependency">{{featureModel.featureMap[mf]}}
+                        <button (click)="deleteDependency('excludingDependency', modalFeature.id, mf)" type="button"
+                            class="btn btn-warning btn-xs bottom-right">Delete</button>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</ng-template>
+
+<ng-template #updateModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{modalFeature.name}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="text-muted pt-3">
+            <form [formGroup]="modalFeatureForm" (ngSubmit)="updateFeature()">
+                <div class="form-group row">
+                    <label for="name" class="col-sm-4 col-form-label">Feature Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" [readonly]="!modalFeature.isDeletable" formControlName="name"
+                            class="form-control" id="name">
+                    </div>
+                </div>
+
+                <div *ngIf="modalFeature.isDeletable" class="form-group row">
+                    <label for="subfeatureOf" class="col-sm-4 col-form-label">Subfeature of</label>
+                    <div class="col-sm-8">
+                        <select id="subfeatureOf" formControlName="subfeatureOf" class="form-control">
+                            <option *ngFor="let fl of featureList; let i = index"
+                                [disabled]="fl.id == modalFeature.id || modalSubfeatureIds.includes(fl.id)"
+                                value="{{fl.id}}">{{fl.levelname}}
+                            </option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="isMandatory" class="col-sm-4 col-form-label">Mandatory Feature</label>
+                    <div class="col-sm-8">
+                        <select id="isMandatory" formControlName="isMandatory" class="form-control">
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="hasOrSubfeatures" class="col-sm-4 col-form-label">OR Subfeatures</label>
+                    <div class="col-sm-8">
+                        <select id="hasOrSubfeatures" formControlName="hasOrSubfeatures" class="form-control">
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="hasXOrSubfeatures" class="col-sm-4 col-form-label">XOR Subfeature</label>
+                    <div class="col-sm-8">
+                        <select id="hasXOrSubfeatures" formControlName="hasXOrSubfeatures" class="form-control">
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-dark btn-block" [disabled]="!modalFeatureForm.valid">Update
+                            Feature</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>
+
+<div class="nav-scroller bg-white shadow-sm">
+    <nav class="nav nav-underline">
+        <a class="nav-link" [routerLink]="['/featuremodelview', featureModel._id]">View {{featureModel.name}}</a>
+        <a class="nav-link active" [routerLink]="['/featuremodel', featureModel._id]">Edit {{featureModel.name}}</a>
+    </nav>
+</div>
+
+<main role="main" class="container">
+    <!-- List of Features -->
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Feature Model List</h6>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <app-feature-tree *ngIf="featureModel && featureModel.features"
+                    (openDependenciesEmitter)="openDependenciesModal($event)"
+                    (updateFeatureEmitter)="updateFeatureModal($event)"
+                    (deleteFeatureEmitter)="deleteFeatureModal($event)" [features]="featureModel.features">
+                </app-feature-tree>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4"><strong>Legend:</strong></div>
+            <div class="col-4"><i class="fa fa-circle"></i> Mandatory Feature</div>
+            <div class="col-4"><i class="fa fa-circle-o"></i> Optional Feature</div>
+        </div>
+        <div class="row">
+            <div class="col-4">&nbsp;</div>
+            <div class="col-4"><i class="fa fa-caret-up"></i> Alternative (Xor)</div>
+            <div class="col-4"><i class="fa fa-angle-up"></i> Or</div>
+        </div>
+        <div class="row">
+            <div class="col-4"><strong>&nbsp;</strong></div>
+            <div class="col-4"><i class="fa fa-arrow-right"></i>Requires (Dependency)</div>
+            <div class="col-4"><i class="fa fa-arrows-alt-h"></i>Excludes (Dependency)</div>
+        </div>
+    </div>
+
+    <!-- Add a Feature-->
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Add Feature</h6>
+        <div class="text-muted pt-3">
+            <form [formGroup]="featureForm" (ngSubmit)="insertFeature()">
+                <div class="form-group row">
+                    <label for="featureName" class="col-sm-4 col-form-label">Feature Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" formControlName="featureName" class="form-control" id="name">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="subfeatureOf" class="col-sm-4 col-form-label">Subfeature of</label>
+                    <div class="col-sm-8">
+                        <select id="subfeatureOf" formControlName="subfeatureOf" class="form-control">
+                            <option *ngFor="let fl of featureList; let i = index" value="{{fl.id}}">{{fl.levelname}}
+                            </option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="isMandatory" class="col-sm-4 col-form-label">Mandatory Feature</label>
+                    <div class="col-sm-8">
+                        <select id="isMandatory" formControlName="isMandatory" class="form-control">
+                            <option value="true" selected>Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="hasOrSubfeatures" class="col-sm-4 col-form-label">OR Subfeatures</label>
+                    <div class="col-sm-8">
+                        <select id="hasOrSubfeatures" formControlName="hasOrSubfeatures" class="form-control">
+                            <option value="true">Yes</option>
+                            <option value="false" selected>No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="hasXOrSubfeatures" class="col-sm-4 col-form-label">XOR Subfeature</label>
+                    <div class="col-sm-8">
+                        <select id="hasXOrSubfeatures" formControlName="hasXOrSubfeatures" class="form-control">
+                            <option value="true">Yes</option>
+                            <option value="false" selected>No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-sm btn-dark btn-block" [disabled]="!featureForm.valid">Add Feature</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add a Dependency-->
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Add Dependency</h6>
+        <div class="text-muted pt-3">
+            <form [formGroup]="dependencyForm" (ngSubmit)="insertDependency()">
+                <div class="form-group row">
+                    <label for="dependencyType" class="col-sm-4 col-form-label">Type of Dependency</label>
+                    <div class="col-sm-8">
+                        <select id="dependencyType" formControlName="dependencyType" class="form-control">
+                            <option value="requiringDependencyTo" selected>A requires B </option>
+                            <option value="requiringDependencyFrom">B requires A</option>
+                            <option value="excludingDependency">A excludes B</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="fromFeatureId" class="col-sm-4 col-form-label">Feature A</label>
+                    <div class="col-sm-8">
+                        <select id="fromFeatureId" formControlName="fromFeatureId" class="form-control">
+                            <option *ngFor="let fl of featureList; let i = index" value="{{fl.id}}">{{fl.levelname}}
+                            </option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="toFeatureId" class="col-sm-4 col-form-label">Feature B</label>
+                    <div class="col-sm-8">
+                        <select id="toFeatureId" formControlName="toFeatureId" class="form-control">
+                            <option *ngFor="let fl of featureList; let i = index" value="{{fl.id}}">{{fl.levelname}}
+                            </option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-sm btn-dark btn-block"
+                            [disabled]="!dependencyForm.valid">Add Dependecy</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Update Feature Model Details -->
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Edit Feature Model</h6>
+        <div class="text-muted pt-3">
+            <form [formGroup]="featureModelForm" (ngSubmit)="updateFeatureModel()">
+                <div class="form-group row">
+                    <label for="name" class="col-sm-4 col-form-label">Model Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" formControlName="name" class="form-control" id="name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="description" class="col-sm-4 col-form-label">Model Description</label>
+                    <div class="col-sm-8">
+                        <input type="text" formControlName="description" class="form-control" id="description">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-sm btn-dark btn-block"
+                            [disabled]="!featureModelForm.valid">Update Feature Model</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

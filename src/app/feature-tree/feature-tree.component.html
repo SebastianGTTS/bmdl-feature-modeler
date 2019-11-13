@@ -1,0 +1,21 @@
+<ul *ngIf="features" class="list-group inner" style="margin:5px;">
+
+  <li *ngFor="let f of features" class="list-group-item justify-content-between align-items-center">
+
+    <span *ngIf="f.feature != 0"><b></b></span>
+
+    <i *ngIf="f.isMandatory" class="fa fa-circle"></i> <i *ngIf="!f.isMandatory" class="fa fa-circle-o"></i>
+    {{ f.name }} <i class="fa fa-caret-up" *ngIf="f.hasOrSubfeatures"></i> <i class="fa fa-angle-up"
+      *ngIf="f.hasXOrSubfeatures"></i> <button type="button"
+      *ngIf="f.requiringDependencyTo.length != 0 || f.requiringDependencyFrom.length != 0 || f.excludingDependency.length != 0"
+      class="btn btn-dark bottom-right-three btn-xs" (click)="openDependencies(f.id)">Show Dependencies</button>
+    <button (click)="updateFeature(f.id)" type="button" class="btn btn-warning btn-xs bottom-right-two">Update</button>
+    <button *ngIf="f.isDeletable" (click)="deleteFeature(f.id)" type="button"
+      class="btn btn-danger btn-xs bottom-right">Delete</button>
+
+    <app-feature-tree [features]="f.features" (openDependenciesEmitter)="openDependenciesForwardEmitter($event)"
+      (updateFeatureEmitter)="updateFeatureForwardEmitter($event)"
+      (deleteFeatureEmitter)="deleteFeatureForwardEmitter($event)"></app-feature-tree>
+  </li>
+
+</ul>

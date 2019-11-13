@@ -1,0 +1,69 @@
+<div class="nav-scroller bg-white shadow-sm">
+    <nav class="nav nav-underline">
+        <a class="nav-link active" href="#">Tool Explanation</a>
+    </nav>
+</div>
+
+<main role="main" class="container">
+    <!-- Show Explanation -->
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Explanation of the BMDL Modeler</h6>
+        <p class="mt-2">The BMDL Feature Modeler is a tool to describe Business Models through a combination of the Business Model Canvas (BMC) and a Software Product Line (SPL). We call this concept Business Model Decision Line (BMDL), where each feature describes a single business model decision. Features can be ordered in hierarchies and marked as mandatory or optional for the business models. Moreover, there can be Or (at least one sub-feature is selected) and Alternate (exactly one sub-feature is selected) relationships between a parent and a child feature. To refine the business models, cross-tree constraints for requiring and excluding dependencies can be made.</p>
+<p>The current state of the tool allows the creation of feature models and the deriving of business models. New business model decisions of single business models are synchronized with the corresponding feature model to ensure consistency. Moreover, the conformance of business models can be checked with the feature model and occurring conformance errors are explained.</p>
+    </div>
+
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Execution Steps</h6>
+
+        <ngb-carousel>
+            <ng-template ngbSlide>
+              <div class="picsum-img-wrapper">
+                <img src="assets/first_screen_exp.png" class="d-block w-100" alt="Create Feature Model">
+              </div>
+              <div class="carousel-caption" style="color: black;">
+                <h3>1. Create Feature Model</h3>
+                <p>In the first step, the business developer has to create a feature model with the business model decisions.</p>
+              </div>
+            </ng-template>
+            <ng-template ngbSlide>
+              <div class="picsum-img-wrapper">
+                <img src="assets/second_screen_exp.png" class="d-block w-100" alt="Derive Business Models">
+              </div>
+              <div class="carousel-caption" style="color: black;">
+                <h3>2. Derive Business Models</h3>
+                <p>In the second step, the business developer can derive different business models from the feature model.</p>
+              </div>
+            </ng-template>
+            <ng-template ngbSlide>
+              <div class="picsum-img-wrapper" >
+                <img src="assets/third_screen_exp.png"class="d-block w-100"  alt="Check Conformance">
+              </div>
+              <div class="carousel-caption" style="color: black;">
+                <h3>3. Check Conformance</h3>
+                <p>In the third step, the business developer can check the conformance between feature model and business model.</p>
+              </div>
+            </ng-template>
+          </ngb-carousel>
+          
+        <p class="mt-2">
+            Information about the execution steps:
+        </p>
+
+        <ol>
+            <li><strong>Create Feature Model:</strong> In the first step, the business developer has to create a feature model with all business model decisions. To support the conformance checking process, he can define mandatory and optional features and create dependencies (requires, excludes) between the features.</li>
+            <li><strong>Derive Business Models:</strong> In the second step, the business developer can derive a different business model from the feature model. Here, he can use the existing features from the feature model or add new business model decisions. These new feature model decisions will be added to the feature model to save consistency.</li>
+            <li><strong>Check Conformance:</strong> In the third step, the business developer can check the conformance between the feature model and the business model. Conformance errors will be explained to support the resolution.</li>
+        </ol>
+    </div>
+
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Further Information</h6>
+        <p class="mt-2">
+            Further information can be accessed in two ways:
+        </p>
+            <ul>
+                <li><strong>Download Source Code: </strong>  <a href="https://github.com/SebastianGTTS/bmdl-feature-modeler">https://github.com/SebastianGTTS/bmdl-feature-modeler</a> </li>
+                <li><strong>Read Research Paper:</strong> Currently under review</li>
+            </ul>
+    </div>
+</main>

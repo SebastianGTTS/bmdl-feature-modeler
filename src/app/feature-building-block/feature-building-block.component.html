@@ -1,0 +1,11 @@
+<ul class="list-group inner no-list" style="margin:5px;">
+    <li><strong>{{buildingBlockName}}</strong>
+        <div class="list-group d-flex flex-row flex-wrap">
+            <a *ngFor="let f of features" style="padding:7px;" [ngClass]="doubleBlock ? 'w-50' : 'w-100'"
+                class="list-group-item list-group-item-action">
+                <i *ngIf="f.isMandatory" class="fa fa-circle"></i> <i *ngIf="!f.isMandatory" class="fa fa-circle-o"></i>
+                {{f.name}}
+            </a>
+        </div>
+    </li>
+</ul>
