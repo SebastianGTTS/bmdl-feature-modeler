@@ -21,11 +21,11 @@ The current state of the tool allows the creation of feature models and the deri
 2. Clone BMDL Feature Modeler repository to your computer
 3. Install all NPM packages with `npm install`
 4. Configure database
-4.1. Internal database: By default the feature modeler is using PouchDB zu store data directly in the web storage of the browser. The database can be changed in `src/app/pouchdb.service.ts` within the variable `databaseName` (default: `bmdl-feature-modeler`)
-4.2 External database: The feature modeler allows also to use a CouchDB database as a persistent storage. For this, you need to change the `databaseName` in `src/app/pouchdb.service.ts` to `http://localhost:4200/database` and specify the url to the CouchDB in `proxy.conf.json` within the variable `target` (default: `http://localhost:5984/bmdl-modeler`)
+    4.1. Internal database: By default the feature modeler is using PouchDB zu store data directly in the web storage of the browser. The database can be changed in `src/app/pouchdb.service.ts` within the variable `databaseName` (default: `bmdl-feature-modeler`)
+    4.2. External database: The feature modeler allows also to use a CouchDB database as a persistent storage. For this, you need to change the `databaseName` in `src/app/pouchdb.service.ts` to `http://localhost:4200/database` and specify the url to the CouchDB in `proxy.conf.json` within the variable `target` (default: `http://localhost:5984/bmdl-modeler`)
 5. Start service
-5.1. Internal database: Run the web application with `ng serve`
-5.2 External database: Run the web application with `npm start` to use the proxy for the external database
+    5.1. Internal database: Run the web application with `ng serve`
+    5.2. External database: Run the web application with `npm start` to use the proxy for the external database
 6. Have fun with the tool :)
 ## Further Information
 
