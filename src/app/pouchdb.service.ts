@@ -735,12 +735,10 @@ export class PouchdbService {
    * Add default data to the database.
    */
   public addDefaultData() {
-    console.log("Inner default db")
     return this.db.destroy().then(result => {
-      console.log("Result: "+JSON.stringify(result))
       this.db = new PouchDB(this.databaseName);
 
-      return this.db.post({
+      return this.db.bulkDocs([{
         "name": "Simple ToDo Example",
         "description": "This is the simple todo example from our paper.",
         "featureIdCounter": 31,
@@ -1294,7 +1292,3388 @@ export class PouchdbService {
         "businessModelMap": {
           "1": "Paper Example"
         }
-      });
+      },
+      {
+        "name": "Case Study on ToDo Applications",
+        "description": "This is the case study of todo applications we perform in our paper.",
+        "featureIdCounter": 164,
+        "businessModelIdCounter": 12,
+        "features": [
+          {
+            "id": 1,
+            "name": "Value Proposition",
+            "isMandatory": false,
+            "hasOrSubfeatures": false,
+            "hasXOrSubfeatures": false,
+            "isDeletable": false,
+            "requiringDependencyFrom": [],
+            "requiringDependencyTo": [],
+            "excludingDependency": [],
+            "features": [
+              {
+                "id": 10,
+                "name": "Accessibility",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 73,
+                    "name": "Anonymous Access",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [
+                      75
+                    ],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      9
+                    ],
+                    "parentId": 10
+                  },
+                  {
+                    "id": 74,
+                    "name": "Simplified Sign-In Servies",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      2,
+                      3,
+                      9,
+                      10
+                    ],
+                    "parentId": 10
+                  },
+                  {
+                    "id": 99,
+                    "name": "Multi-OS Access",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [
+                      128
+                    ],
+                    "features": [],
+                    "businessModelIds": [
+                      2,
+                      3
+                    ],
+                    "parentId": 10
+                  },
+                  {
+                    "id": 100,
+                    "name": "Device Syncronisation",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      3
+                    ],
+                    "parentId": 10
+                  }
+                ],
+                "businessModelIds": [
+                  1,
+                  2,
+                  3,
+                  10,
+                  9
+                ],
+                "parentId": 1
+              },
+              {
+                "id": 11,
+                "name": "Customization",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 75,
+                    "name": "Personalized Recommendations",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [
+                      73
+                    ],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      2
+                    ],
+                    "parentId": 11
+                  },
+                  {
+                    "id": 76,
+                    "name": "Changeable User Interfaces",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      5
+                    ],
+                    "parentId": 11
+                  }
+                ],
+                "businessModelIds": [
+                  1,
+                  2,
+                  5
+                ],
+                "parentId": 1
+              },
+              {
+                "id": 12,
+                "name": "Design / Usability",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 77,
+                    "name": "Execution Step Reduction",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      4
+                    ],
+                    "parentId": 12
+                  },
+                  {
+                    "id": 78,
+                    "name": "Design Pattern Usage",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      3,
+                      4,
+                      5,
+                      6,
+                      7
+                    ],
+                    "parentId": 12
+                  }
+                ],
+                "businessModelIds": [
+                  1,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "parentId": 1
+              },
+              {
+                "id": 13,
+                "name": "Price",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 79,
+                    "name": "Free for All",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [
+                      81
+                    ],
+                    "features": [],
+                    "businessModelIds": [
+                      1
+                    ],
+                    "parentId": 13
+                  },
+                  {
+                    "id": 80,
+                    "name": "Low-Price Strategy",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1
+                    ],
+                    "parentId": 13
+                  },
+                  {
+                    "id": 81,
+                    "name": "Money-Back Guarantee",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [
+                      79
+                    ],
+                    "features": [],
+                    "businessModelIds": [
+                      1
+                    ],
+                    "parentId": 13
+                  }
+                ],
+                "businessModelIds": [
+                  1
+                ],
+                "parentId": 1
+              },
+              {
+                "id": 14,
+                "name": "Network",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [
+                  58
+                ],
+                "features": [
+                  {
+                    "id": 82,
+                    "name": "Quantity Network Size",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1
+                    ],
+                    "parentId": 14
+                  },
+                  {
+                    "id": 84,
+                    "name": "Quality Network Users",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1
+                    ],
+                    "parentId": 14
+                  }
+                ],
+                "businessModelIds": [
+                  1
+                ],
+                "parentId": 1
+              },
+              {
+                "id": 101,
+                "name": "Function Scope",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 102,
+                    "name": "Minimized Scope",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      6,
+                      7
+                    ],
+                    "parentId": 101
+                  },
+                  {
+                    "id": 103,
+                    "name": "Maximized Scope",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      3,
+                      4,
+                      5
+                    ],
+                    "parentId": 101
+                  },
+                  {
+                    "id": 154,
+                    "name": "Medium Scope",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      2
+                    ],
+                    "parentId": 101
+                  }
+                ],
+                "businessModelIds": [
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "parentId": 1
+              },
+              {
+                "id": 104,
+                "name": "Task Management",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 105,
+                    "name": "Splitting of Tasks",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      3,
+                      4,
+                      10,
+                      11
+                    ],
+                    "parentId": 104
+                  },
+                  {
+                    "id": 106,
+                    "name": "Work Together",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [
+                      58
+                    ],
+                    "features": [],
+                    "businessModelIds": [
+                      2,
+                      3,
+                      4,
+                      11
+                    ],
+                    "parentId": 104
+                  }
+                ],
+                "businessModelIds": [
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  10,
+                  11
+                ],
+                "parentId": 1
+              },
+              {
+                "id": 107,
+                "name": "Workflow Management",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 108,
+                    "name": "Workflow Templates",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      5,
+                      11
+                    ],
+                    "parentId": 107
+                  },
+                  {
+                    "id": 109,
+                    "name": "Workflow Tracker",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      11
+                    ],
+                    "parentId": 107
+                  },
+                  {
+                    "id": 155,
+                    "name": "Intelligent Flow Planer",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      2,
+                      11
+                    ],
+                    "parentId": 107
+                  },
+                  {
+                    "id": 157,
+                    "name": "Connect To Calender",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      4,
+                      11
+                    ],
+                    "parentId": 107
+                  }
+                ],
+                "businessModelIds": [
+                  2,
+                  3,
+                  4,
+                  5,
+                  11
+                ],
+                "parentId": 1
+              },
+              {
+                "id": 110,
+                "name": "Productivity Analysis",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 111,
+                    "name": "Light-Weight Tooling",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      5
+                    ],
+                    "parentId": 110
+                  },
+                  {
+                    "id": 112,
+                    "name": "Productivity Optimization",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      10
+                    ],
+                    "parentId": 110
+                  }
+                ],
+                "businessModelIds": [
+                  5,
+                  10,
+                  11
+                ],
+                "parentId": 1
+              },
+              {
+                "id": 113,
+                "name": "Segment Optimized Functions",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 114,
+                    "name": "General",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [
+                      {
+                        "id": 115,
+                        "name": "Automatic Task Breakdown",
+                        "isMandatory": false,
+                        "hasOrSubfeatures": false,
+                        "hasXOrSubfeatures": false,
+                        "isDeletable": true,
+                        "requiringDependencyFrom": [],
+                        "requiringDependencyTo": [],
+                        "excludingDependency": [],
+                        "features": [],
+                        "businessModelIds": [
+                          8,
+                          9,
+                          10,
+                          11
+                        ],
+                        "parentId": 114
+                      },
+                      {
+                        "id": 116,
+                        "name": "Task Time Prediction",
+                        "isMandatory": false,
+                        "hasOrSubfeatures": false,
+                        "hasXOrSubfeatures": false,
+                        "isDeletable": true,
+                        "requiringDependencyFrom": [],
+                        "requiringDependencyTo": [],
+                        "excludingDependency": [],
+                        "features": [],
+                        "businessModelIds": [
+                          8,
+                          10,
+                          11
+                        ],
+                        "parentId": 114
+                      },
+                      {
+                        "id": 117,
+                        "name": "Connect To Friends",
+                        "isMandatory": false,
+                        "hasOrSubfeatures": false,
+                        "hasXOrSubfeatures": false,
+                        "isDeletable": true,
+                        "requiringDependencyFrom": [],
+                        "requiringDependencyTo": [],
+                        "excludingDependency": [
+                          58
+                        ],
+                        "features": [],
+                        "businessModelIds": [
+                          8,
+                          9
+                        ],
+                        "parentId": 114
+                      }
+                    ],
+                    "businessModelIds": [
+                      8,
+                      9,
+                      10,
+                      11
+                    ],
+                    "parentId": 113
+                  },
+                  {
+                    "id": 118,
+                    "name": "Fitness Functions",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [
+                      130
+                    ],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [
+                      {
+                        "id": 119,
+                        "name": "Time To Sport",
+                        "isMandatory": false,
+                        "hasOrSubfeatures": false,
+                        "hasXOrSubfeatures": false,
+                        "isDeletable": true,
+                        "requiringDependencyFrom": [],
+                        "requiringDependencyTo": [],
+                        "excludingDependency": [],
+                        "features": [],
+                        "businessModelIds": [
+                          8,
+                          9
+                        ],
+                        "parentId": 118
+                      },
+                      {
+                        "id": 120,
+                        "name": "Calories Tracker",
+                        "isMandatory": false,
+                        "hasOrSubfeatures": false,
+                        "hasXOrSubfeatures": false,
+                        "isDeletable": true,
+                        "requiringDependencyFrom": [],
+                        "requiringDependencyTo": [],
+                        "excludingDependency": [],
+                        "features": [],
+                        "businessModelIds": [
+                          8,
+                          9
+                        ],
+                        "parentId": 118
+                      }
+                    ],
+                    "businessModelIds": [
+                      8,
+                      9
+                    ],
+                    "parentId": 113
+                  },
+                  {
+                    "id": 121,
+                    "name": "Work&Life Balance",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [
+                      131
+                    ],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [
+                      {
+                        "id": 122,
+                        "name": "Optimize Scheduling",
+                        "isMandatory": false,
+                        "hasOrSubfeatures": false,
+                        "hasXOrSubfeatures": false,
+                        "isDeletable": true,
+                        "requiringDependencyFrom": [],
+                        "requiringDependencyTo": [],
+                        "excludingDependency": [],
+                        "features": [],
+                        "businessModelIds": [
+                          8,
+                          10
+                        ],
+                        "parentId": 121
+                      },
+                      {
+                        "id": 123,
+                        "name": "Optimize Concentration",
+                        "isMandatory": false,
+                        "hasOrSubfeatures": false,
+                        "hasXOrSubfeatures": false,
+                        "isDeletable": true,
+                        "requiringDependencyFrom": [],
+                        "requiringDependencyTo": [],
+                        "excludingDependency": [],
+                        "features": [],
+                        "businessModelIds": [
+                          8,
+                          10
+                        ],
+                        "parentId": 121
+                      }
+                    ],
+                    "businessModelIds": [
+                      8,
+                      10
+                    ],
+                    "parentId": 113
+                  },
+                  {
+                    "id": 124,
+                    "name": "Business Functions",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [
+                      132
+                    ],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [
+                      {
+                        "id": 125,
+                        "name": "Automatic Task Scheduling",
+                        "isMandatory": false,
+                        "hasOrSubfeatures": false,
+                        "hasXOrSubfeatures": false,
+                        "isDeletable": true,
+                        "requiringDependencyFrom": [],
+                        "requiringDependencyTo": [],
+                        "excludingDependency": [],
+                        "features": [],
+                        "businessModelIds": [
+                          8,
+                          11
+                        ],
+                        "parentId": 124
+                      },
+                      {
+                        "id": 126,
+                        "name": "Workflow Tracking",
+                        "isMandatory": false,
+                        "hasOrSubfeatures": false,
+                        "hasXOrSubfeatures": false,
+                        "isDeletable": true,
+                        "requiringDependencyFrom": [],
+                        "requiringDependencyTo": [],
+                        "excludingDependency": [],
+                        "features": [],
+                        "businessModelIds": [
+                          8,
+                          11
+                        ],
+                        "parentId": 124
+                      }
+                    ],
+                    "businessModelIds": [
+                      8,
+                      11
+                    ],
+                    "parentId": 113
+                  }
+                ],
+                "businessModelIds": [
+                  8,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 1
+              }
+            ],
+            "businessModelIds": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "parentId": 0
+          },
+          {
+            "id": 2,
+            "name": "Customer Segment",
+            "isMandatory": false,
+            "hasOrSubfeatures": false,
+            "hasXOrSubfeatures": false,
+            "isDeletable": false,
+            "requiringDependencyFrom": [],
+            "requiringDependencyTo": [],
+            "excludingDependency": [],
+            "features": [
+              {
+                "id": 15,
+                "name": "Interaction Type",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": true,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 58,
+                    "name": "Single-User",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [
+                      14,
+                      106,
+                      117,
+                      138
+                    ],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      7,
+                      6,
+                      10
+                    ],
+                    "parentId": 15
+                  },
+                  {
+                    "id": 59,
+                    "name": "Single-Sided-Market",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      2,
+                      3,
+                      4,
+                      5,
+                      9,
+                      11
+                    ],
+                    "parentId": 15
+                  },
+                  {
+                    "id": 60,
+                    "name": "Multi-Sided-Market",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1
+                    ],
+                    "parentId": 15
+                  }
+                ],
+                "businessModelIds": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 2
+              },
+              {
+                "id": 16,
+                "name": "Market Size",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": true,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 61,
+                    "name": "Niche Market",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      9,
+                      10,
+                      11
+                    ],
+                    "parentId": 16
+                  },
+                  {
+                    "id": 62,
+                    "name": "Mass Market",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      2,
+                      3,
+                      4,
+                      5,
+                      6,
+                      7
+                    ],
+                    "parentId": 16
+                  }
+                ],
+                "businessModelIds": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 2
+              },
+              {
+                "id": 17,
+                "name": "Target Group",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 130,
+                    "name": "Fitness Improver",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [
+                      118
+                    ],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      8,
+                      9
+                    ],
+                    "parentId": 17
+                  },
+                  {
+                    "id": 131,
+                    "name": "Life Improver",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [
+                      121
+                    ],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      8,
+                      10
+                    ],
+                    "parentId": 17
+                  },
+                  {
+                    "id": 132,
+                    "name": "Business Improver",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [
+                      124
+                    ],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      8,
+                      11
+                    ],
+                    "parentId": 17
+                  }
+                ],
+                "businessModelIds": [
+                  1,
+                  8,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 2
+              },
+              {
+                "id": 18,
+                "name": "User Type",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 63,
+                    "name": "Private User",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      2,
+                      3,
+                      4,
+                      5,
+                      6,
+                      7,
+                      9,
+                      10
+                    ],
+                    "parentId": 18
+                  },
+                  {
+                    "id": 64,
+                    "name": "Professional User",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      2,
+                      3,
+                      4,
+                      5,
+                      11
+                    ],
+                    "parentId": 18
+                  }
+                ],
+                "businessModelIds": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 2
+              },
+              {
+                "id": 127,
+                "name": "Homing",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": true,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 128,
+                    "name": "Single-Homed",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [
+                      99
+                    ],
+                    "features": [],
+                    "businessModelIds": [
+                      6,
+                      7
+                    ],
+                    "parentId": 127
+                  },
+                  {
+                    "id": 129,
+                    "name": "Multi-Homed",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      2,
+                      3,
+                      4,
+                      5,
+                      9,
+                      10,
+                      11
+                    ],
+                    "parentId": 127
+                  }
+                ],
+                "businessModelIds": [
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 2
+              }
+            ],
+            "businessModelIds": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "parentId": 0
+          },
+          {
+            "id": 3,
+            "name": "Customer Relationships",
+            "isMandatory": false,
+            "hasOrSubfeatures": false,
+            "hasXOrSubfeatures": false,
+            "isDeletable": false,
+            "requiringDependencyFrom": [],
+            "requiringDependencyTo": [],
+            "excludingDependency": [],
+            "features": [
+              {
+                "id": 19,
+                "name": "Customer Aquisition",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 85,
+                    "name": "Advertisements",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [
+                      {
+                        "id": 136,
+                        "name": "Facbook Ads",
+                        "isMandatory": false,
+                        "hasOrSubfeatures": false,
+                        "hasXOrSubfeatures": false,
+                        "isDeletable": true,
+                        "requiringDependencyFrom": [],
+                        "requiringDependencyTo": [],
+                        "excludingDependency": [],
+                        "features": [],
+                        "businessModelIds": [],
+                        "parentId": 85
+                      }
+                    ],
+                    "businessModelIds": [
+                      1,
+                      3,
+                      4,
+                      5,
+                      10,
+                      11
+                    ],
+                    "parentId": 19
+                  },
+                  {
+                    "id": 86,
+                    "name": "Friend Invitation System",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      3,
+                      4,
+                      5,
+                      9,
+                      10,
+                      11
+                    ],
+                    "parentId": 19
+                  },
+                  {
+                    "id": 133,
+                    "name": "Existing Customer Base",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [
+                      {
+                        "id": 134,
+                        "name": "Brand Customer Base",
+                        "isMandatory": false,
+                        "hasOrSubfeatures": false,
+                        "hasXOrSubfeatures": false,
+                        "isDeletable": true,
+                        "requiringDependencyFrom": [],
+                        "requiringDependencyTo": [],
+                        "excludingDependency": [],
+                        "features": [],
+                        "businessModelIds": [],
+                        "parentId": 133
+                      },
+                      {
+                        "id": 135,
+                        "name": "OS Customer Base",
+                        "isMandatory": false,
+                        "hasOrSubfeatures": false,
+                        "hasXOrSubfeatures": false,
+                        "isDeletable": true,
+                        "requiringDependencyFrom": [],
+                        "requiringDependencyTo": [],
+                        "excludingDependency": [],
+                        "features": [],
+                        "businessModelIds": [],
+                        "parentId": 133
+                      }
+                    ],
+                    "businessModelIds": [
+                      2,
+                      6,
+                      7
+                    ],
+                    "parentId": 19
+                  },
+                  {
+                    "id": 158,
+                    "name": "Online Communities",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      8,
+                      9,
+                      11
+                    ],
+                    "parentId": 19
+                  },
+                  {
+                    "id": 159,
+                    "name": "Facebook Groups",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [
+                      35
+                    ],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      8,
+                      9,
+                      10
+                    ],
+                    "parentId": 19
+                  }
+                ],
+                "businessModelIds": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  8,
+                  5,
+                  6,
+                  7,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 3
+              },
+              {
+                "id": 20,
+                "name": "Customer Retention",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 87,
+                    "name": "Locked-In",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      5,
+                      10,
+                      11
+                    ],
+                    "parentId": 20
+                  },
+                  {
+                    "id": 88,
+                    "name": "Gamification",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [
+                      {
+                        "id": 137,
+                        "name": "Progress Discovery",
+                        "isMandatory": false,
+                        "hasOrSubfeatures": false,
+                        "hasXOrSubfeatures": false,
+                        "isDeletable": true,
+                        "requiringDependencyFrom": [],
+                        "requiringDependencyTo": [],
+                        "excludingDependency": [],
+                        "features": [],
+                        "businessModelIds": [
+                          8,
+                          9,
+                          10,
+                          11
+                        ],
+                        "parentId": 88
+                      },
+                      {
+                        "id": 138,
+                        "name": "Friend Challenges",
+                        "isMandatory": false,
+                        "hasOrSubfeatures": false,
+                        "hasXOrSubfeatures": false,
+                        "isDeletable": true,
+                        "requiringDependencyFrom": [],
+                        "requiringDependencyTo": [],
+                        "excludingDependency": [
+                          58
+                        ],
+                        "features": [],
+                        "businessModelIds": [
+                          8,
+                          9
+                        ],
+                        "parentId": 88
+                      }
+                    ],
+                    "businessModelIds": [
+                      1,
+                      8,
+                      9,
+                      10,
+                      11
+                    ],
+                    "parentId": 20
+                  },
+                  {
+                    "id": 89,
+                    "name": "Customer Support",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      2,
+                      3,
+                      4,
+                      5,
+                      11
+                    ],
+                    "parentId": 20
+                  },
+                  {
+                    "id": 156,
+                    "name": "Free Usage",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      2,
+                      9
+                    ],
+                    "parentId": 20
+                  }
+                ],
+                "businessModelIds": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  8,
+                  5,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 3
+              },
+              {
+                "id": 21,
+                "name": "Boosting Sales",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 92,
+                    "name": "Forced Stops",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1
+                    ],
+                    "parentId": 21
+                  }
+                ],
+                "businessModelIds": [
+                  1
+                ],
+                "parentId": 3
+              }
+            ],
+            "businessModelIds": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "parentId": 0
+          },
+          {
+            "id": 4,
+            "name": "Customer Channels",
+            "isMandatory": false,
+            "hasOrSubfeatures": false,
+            "hasXOrSubfeatures": false,
+            "isDeletable": false,
+            "requiringDependencyFrom": [],
+            "requiringDependencyTo": [],
+            "excludingDependency": [],
+            "features": [
+              {
+                "id": 22,
+                "name": "Awareness",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 93,
+                    "name": "Word-of-Mouth",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      2,
+                      3,
+                      4,
+                      5,
+                      9,
+                      10,
+                      11
+                    ],
+                    "parentId": 22
+                  },
+                  {
+                    "id": 94,
+                    "name": "Store Placement",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      3,
+                      4
+                    ],
+                    "parentId": 22
+                  },
+                  {
+                    "id": 139,
+                    "name": "Facebook Groups",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      8,
+                      9,
+                      10
+                    ],
+                    "parentId": 22
+                  },
+                  {
+                    "id": 140,
+                    "name": "Online Communities",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      8,
+                      9,
+                      11
+                    ],
+                    "parentId": 22
+                  },
+                  {
+                    "id": 141,
+                    "name": "Social Media Ads",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      3,
+                      4,
+                      8,
+                      5,
+                      10,
+                      11
+                    ],
+                    "parentId": 22
+                  },
+                  {
+                    "id": 163,
+                    "name": "Influencer Marketing",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      8
+                    ]
+                  }
+                ],
+                "businessModelIds": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  8,
+                  5,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 4
+              },
+              {
+                "id": 23,
+                "name": "Evaluation",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 95,
+                    "name": "Freemium",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      3,
+                      4,
+                      5,
+                      10,
+                      11
+                    ],
+                    "parentId": 23
+                  },
+                  {
+                    "id": 96,
+                    "name": "AppStore Optimization",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [
+                      {
+                        "id": 143,
+                        "name": "Review Reactions",
+                        "isMandatory": false,
+                        "hasOrSubfeatures": false,
+                        "hasXOrSubfeatures": false,
+                        "isDeletable": true,
+                        "requiringDependencyFrom": [],
+                        "requiringDependencyTo": [],
+                        "excludingDependency": [],
+                        "features": [],
+                        "businessModelIds": [],
+                        "parentId": 96
+                      }
+                    ],
+                    "businessModelIds": [
+                      1,
+                      3,
+                      9,
+                      10,
+                      11
+                    ],
+                    "parentId": 23
+                  },
+                  {
+                    "id": 142,
+                    "name": "Company Branding",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      2
+                    ],
+                    "parentId": 23
+                  }
+                ],
+                "businessModelIds": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 4
+              },
+              {
+                "id": 24,
+                "name": "Purchase",
+                "isMandatory": true,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 67,
+                    "name": "In-Store Purchase",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      2,
+                      3,
+                      4,
+                      5,
+                      9,
+                      10,
+                      11
+                    ],
+                    "parentId": 24
+                  },
+                  {
+                    "id": 68,
+                    "name": "Out-of-Store Purchase",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [
+                      44
+                    ],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      3,
+                      4,
+                      5,
+                      11
+                    ],
+                    "parentId": 24
+                  },
+                  {
+                    "id": 161,
+                    "name": "No Purchase",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [],
+                    "parentId": 24
+                  }
+                ],
+                "businessModelIds": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 4
+              },
+              {
+                "id": 25,
+                "name": "Delivery",
+                "isMandatory": true,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 69,
+                    "name": "In-Store Delivery",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      2,
+                      3,
+                      4,
+                      5,
+                      9,
+                      10,
+                      11
+                    ],
+                    "parentId": 25
+                  },
+                  {
+                    "id": 70,
+                    "name": "Out-of-Store Delivery",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1
+                    ],
+                    "parentId": 25
+                  }
+                ],
+                "businessModelIds": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 4
+              },
+              {
+                "id": 26,
+                "name": "After Sales",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 97,
+                    "name": "App Updates",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [
+                      {
+                        "id": 144,
+                        "name": "Update with OS",
+                        "isMandatory": false,
+                        "hasOrSubfeatures": false,
+                        "hasXOrSubfeatures": false,
+                        "isDeletable": true,
+                        "requiringDependencyFrom": [],
+                        "requiringDependencyTo": [],
+                        "excludingDependency": [],
+                        "features": [],
+                        "businessModelIds": [],
+                        "parentId": 97
+                      }
+                    ],
+                    "businessModelIds": [
+                      1,
+                      2,
+                      3,
+                      4,
+                      5,
+                      9,
+                      10,
+                      11
+                    ],
+                    "parentId": 26
+                  },
+                  {
+                    "id": 98,
+                    "name": "Content Updates",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      9,
+                      10
+                    ],
+                    "parentId": 26
+                  }
+                ],
+                "businessModelIds": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 4
+              },
+              {
+                "id": 160,
+                "name": "Included in OS",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  6,
+                  7
+                ],
+                "parentId": 4
+              }
+            ],
+            "businessModelIds": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "parentId": 0
+          },
+          {
+            "id": 5,
+            "name": "Key Partners",
+            "isMandatory": false,
+            "hasOrSubfeatures": false,
+            "hasXOrSubfeatures": false,
+            "isDeletable": false,
+            "requiringDependencyFrom": [],
+            "requiringDependencyTo": [],
+            "excludingDependency": [],
+            "features": [
+              {
+                "id": 38,
+                "name": "Advertisement Partner",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [
+                  27
+                ],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1,
+                  9
+                ],
+                "parentId": 5
+              },
+              {
+                "id": 39,
+                "name": "App Developer",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1
+                ],
+                "parentId": 5
+              },
+              {
+                "id": 41,
+                "name": "Content Provider",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1,
+                  9
+                ],
+                "parentId": 5
+              },
+              {
+                "id": 42,
+                "name": "Instrastructure Provider",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1,
+                  3,
+                  4,
+                  5,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 5
+              },
+              {
+                "id": 43,
+                "name": "Manufacturing Provider",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1
+                ],
+                "parentId": 5
+              },
+              {
+                "id": 44,
+                "name": "Payment Provider",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [
+                  68
+                ],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1,
+                  3,
+                  4,
+                  5,
+                  11
+                ],
+                "parentId": 5
+              },
+              {
+                "id": 45,
+                "name": "Store Provider",
+                "isMandatory": true,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 5
+              },
+              {
+                "id": 151,
+                "name": "Third-Party Developer",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [
+                  152
+                ],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  3,
+                  4,
+                  5
+                ],
+                "parentId": 5
+              },
+              {
+                "id": 162,
+                "name": "Influencer",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  8
+                ]
+              }
+            ],
+            "businessModelIds": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "parentId": 0
+          },
+          {
+            "id": 6,
+            "name": "Key Activities",
+            "isMandatory": false,
+            "hasOrSubfeatures": false,
+            "hasXOrSubfeatures": false,
+            "isDeletable": false,
+            "requiringDependencyFrom": [],
+            "requiringDependencyTo": [],
+            "excludingDependency": [],
+            "features": [
+              {
+                "id": 46,
+                "name": "Develop Hard- and Software",
+                "isMandatory": true,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [
+                  32
+                ],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 65,
+                    "name": "Develop Software",
+                    "isMandatory": true,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      3,
+                      4,
+                      5,
+                      6,
+                      9,
+                      10
+                    ],
+                    "parentId": 46
+                  },
+                  {
+                    "id": 66,
+                    "name": "Develop Hardware",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1
+                    ],
+                    "parentId": 46
+                  }
+                ],
+                "businessModelIds": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 6
+              },
+              {
+                "id": 47,
+                "name": "Negotiate Licenses",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [
+                  34
+                ],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1
+                ],
+                "parentId": 6
+              },
+              {
+                "id": 48,
+                "name": "Manage Infrastructure",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [
+                  33
+                ],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  10,
+                  11
+                ],
+                "parentId": 6
+              },
+              {
+                "id": 49,
+                "name": "Produce Content",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [
+                  36
+                ],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1,
+                  9,
+                  10
+                ],
+                "parentId": 6
+              },
+              {
+                "id": 50,
+                "name": "Plan Marketing Campaigns",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [
+                  35
+                ],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 6
+              },
+              {
+                "id": 51,
+                "name": "Support Customer",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [
+                  37
+                ],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 6
+              }
+            ],
+            "businessModelIds": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "parentId": 0
+          },
+          {
+            "id": 7,
+            "name": "Key Resources",
+            "isMandatory": false,
+            "hasOrSubfeatures": false,
+            "hasXOrSubfeatures": false,
+            "isDeletable": false,
+            "requiringDependencyFrom": [],
+            "requiringDependencyTo": [],
+            "excludingDependency": [],
+            "businessModelIds": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "features": [
+              {
+                "id": 52,
+                "name": "Algorithms",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1,
+                  3,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 7
+              },
+              {
+                "id": 53,
+                "name": "Brands",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1
+                ],
+                "parentId": 7
+              },
+              {
+                "id": 54,
+                "name": "Content",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1,
+                  9,
+                  10
+                ],
+                "parentId": 7
+              },
+              {
+                "id": 55,
+                "name": "Developer License",
+                "isMandatory": true,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 7
+              },
+              {
+                "id": 57,
+                "name": "Patents",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1
+                ],
+                "parentId": 7
+              },
+              {
+                "id": 56,
+                "name": "Infrastructure",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "features": [],
+                "businessModelIds": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  9,
+                  10,
+                  11
+                ],
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [
+                  33
+                ],
+                "excludingDependency": [],
+                "parentId": 7
+              },
+              {
+                "id": 152,
+                "name": "Developer API",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [
+                  151
+                ],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  3,
+                  4,
+                  5
+                ],
+                "parentId": 7
+              }
+            ],
+            "parentId": 0
+          },
+          {
+            "id": 8,
+            "name": "Revenue Streams",
+            "isMandatory": false,
+            "hasOrSubfeatures": true,
+            "hasXOrSubfeatures": false,
+            "isDeletable": false,
+            "requiringDependencyFrom": [],
+            "requiringDependencyTo": [],
+            "excludingDependency": [],
+            "features": [
+              {
+                "id": 27,
+                "name": "Advertisement",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [
+                  38
+                ],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 90,
+                    "name": "In-App Ads",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1,
+                      9
+                    ],
+                    "parentId": 27
+                  },
+                  {
+                    "id": 91,
+                    "name": "Personalized Ads",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1
+                    ],
+                    "parentId": 27
+                  }
+                ],
+                "businessModelIds": [
+                  1,
+                  9
+                ],
+                "parentId": 8
+              },
+              {
+                "id": 28,
+                "name": "Brokerage",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1
+                ],
+                "parentId": 8
+              },
+              {
+                "id": 29,
+                "name": "Donation",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1
+                ],
+                "parentId": 8
+              },
+              {
+                "id": 30,
+                "name": "Sale",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 71,
+                    "name": "App Purchase",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1
+                    ],
+                    "parentId": 30
+                  },
+                  {
+                    "id": 72,
+                    "name": "In-App Purchase",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      1
+                    ],
+                    "parentId": 30
+                  }
+                ],
+                "businessModelIds": [
+                  1
+                ],
+                "parentId": 8
+              },
+              {
+                "id": 31,
+                "name": "Subscription",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 148,
+                    "name": "Normal Account",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      3,
+                      4,
+                      5
+                    ],
+                    "parentId": 31
+                  },
+                  {
+                    "id": 149,
+                    "name": "Professional Account",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      3,
+                      4,
+                      11
+                    ],
+                    "parentId": 31
+                  },
+                  {
+                    "id": 150,
+                    "name": "Business Account",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      4,
+                      5,
+                      11
+                    ],
+                    "parentId": 31
+                  }
+                ],
+                "businessModelIds": [
+                  1,
+                  3,
+                  4,
+                  5,
+                  10,
+                  11
+                ],
+                "parentId": 8
+              },
+              {
+                "id": 145,
+                "name": "Cross-Financed",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [
+                  {
+                    "id": 146,
+                    "name": "Hardware",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      6
+                    ],
+                    "parentId": 145
+                  },
+                  {
+                    "id": 147,
+                    "name": "Software",
+                    "isMandatory": false,
+                    "hasOrSubfeatures": false,
+                    "hasXOrSubfeatures": false,
+                    "isDeletable": true,
+                    "requiringDependencyFrom": [],
+                    "requiringDependencyTo": [],
+                    "excludingDependency": [],
+                    "features": [],
+                    "businessModelIds": [
+                      6,
+                      7
+                    ],
+                    "parentId": 145
+                  }
+                ],
+                "businessModelIds": [
+                  2,
+                  6,
+                  7
+                ],
+                "parentId": 8
+              }
+            ],
+            "businessModelIds": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "parentId": 0
+          },
+          {
+            "id": 9,
+            "name": "Cost Structure",
+            "isMandatory": false,
+            "hasOrSubfeatures": false,
+            "hasXOrSubfeatures": false,
+            "isDeletable": false,
+            "requiringDependencyFrom": [],
+            "requiringDependencyTo": [],
+            "excludingDependency": [],
+            "features": [
+              {
+                "id": 32,
+                "name": "Development",
+                "isMandatory": true,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [
+                  46
+                ],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 9
+              },
+              {
+                "id": 33,
+                "name": "Infrastructure",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [
+                  48,
+                  56
+                ],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 9
+              },
+              {
+                "id": 34,
+                "name": "Licenses",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [
+                  47
+                ],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1
+                ],
+                "parentId": 9
+              },
+              {
+                "id": 35,
+                "name": "Marketing",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [
+                  50,
+                  159
+                ],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 9
+              },
+              {
+                "id": 36,
+                "name": "Production ",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [
+                  49
+                ],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1,
+                  9,
+                  10
+                ],
+                "parentId": 9
+              },
+              {
+                "id": 37,
+                "name": "Support",
+                "isMandatory": false,
+                "hasOrSubfeatures": false,
+                "hasXOrSubfeatures": false,
+                "isDeletable": true,
+                "requiringDependencyFrom": [
+                  51
+                ],
+                "requiringDependencyTo": [],
+                "excludingDependency": [],
+                "features": [],
+                "businessModelIds": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  9,
+                  10,
+                  11
+                ],
+                "parentId": 9
+              }
+            ],
+            "businessModelIds": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "parentId": 0
+          }
+        ],
+        "featureMap": {
+          "1": "Value Proposition",
+          "2": "Customer Segments",
+          "3": "Customer Relationships",
+          "4": "Customer Channel",
+          "5": "Key Partners",
+          "6": "Key Activities",
+          "7": "Key Resources",
+          "8": "Revenue Streams",
+          "9": "Cost Structure",
+          "10": "Accessibility",
+          "11": "Customization",
+          "12": "Design / Usability",
+          "13": "Price",
+          "14": "Network",
+          "15": "Interaction Type",
+          "16": "Market Size",
+          "17": "Target Group",
+          "18": "User Type",
+          "19": "Customer Aquisition",
+          "20": "Customer Retention",
+          "21": "Boosting Sales",
+          "22": "Awareness",
+          "23": "Evaluation",
+          "24": "Purchase",
+          "25": "Delivery",
+          "26": "After Sales",
+          "27": "Advertisement",
+          "28": "Brokerage",
+          "29": "Donation",
+          "30": "Sale",
+          "31": "Subscription",
+          "32": "Development",
+          "33": "Infrastructure",
+          "34": "Licenses",
+          "35": "Marketing",
+          "36": "Production ",
+          "37": "Support",
+          "38": "Advertisement Partner",
+          "39": "App Developer",
+          "41": "Content Provider",
+          "42": "Instrastructure Provider",
+          "43": "Manufacturing Provider",
+          "44": "Payment Provider",
+          "45": "Store Provider",
+          "46": "Develop Hard- and Software",
+          "47": "Negotiate Licsenses",
+          "48": "Manage Infrastructure",
+          "49": "Produce Content",
+          "50": "Plan Marketing Campaigns",
+          "51": "Support Customer",
+          "52": "Algorithms",
+          "53": "Brands",
+          "54": "Content",
+          "55": "Developer Licsense",
+          "56": "Infrastructure",
+          "57": "Patents",
+          "58": "Single-User",
+          "59": "Single-Sided-Market",
+          "60": "Multi-Sided-Market",
+          "61": "Niche Market",
+          "62": "Mass Market",
+          "63": "Private User",
+          "64": "Professional User",
+          "65": "Develop Software",
+          "66": "Develop Hardware",
+          "67": "In-Store-Purchase",
+          "68": "Out-Of-Store Purchase",
+          "69": "In-Store-Delivery",
+          "70": "Out-of-Store Delivery",
+          "71": "App Purchase",
+          "72": "In-App Purchase",
+          "73": "Anonymous Access",
+          "74": "Simplified Sign-In Servies",
+          "75": "Personalized Recommendations",
+          "76": "Changeable User Interfaces",
+          "77": "Execution Step Reduction",
+          "78": "Design Pattern Usage",
+          "79": "Free for All",
+          "80": "Low-Price Strategy",
+          "81": "Money-Back Guarantee",
+          "82": "Quantity Network Size",
+          "84": "Quality Network Users",
+          "85": "Advertisements",
+          "86": "Friend Invitation System",
+          "87": "Locked-In",
+          "88": "Gamification",
+          "89": "Customer Support",
+          "90": "Inn-App Ads",
+          "91": "Personalized Ads",
+          "92": "Forced Stops",
+          "93": "Word-of-Mouth",
+          "94": "Store Placement",
+          "95": "Freemium",
+          "96": "AppStore Optimization",
+          "97": "App Updates",
+          "98": "Content Updates",
+          "99": "Multi-OS Access",
+          "100": "Device Syncronisation",
+          "101": "Function Scope",
+          "102": "Minimized Scope",
+          "103": "Maximized Scope",
+          "104": "Task Management",
+          "105": "Splitting of Tasks",
+          "106": "Work Together",
+          "107": "Workflow Management",
+          "108": "Workflow Templates",
+          "109": "Workflow Tracker",
+          "110": "Productivity Analysis",
+          "111": "Light-Weight Tooling",
+          "112": "Productivity Optimization",
+          "113": "Segment Optimized Functions",
+          "114": "General",
+          "115": "Automatic Task Breakdown",
+          "116": "Task Time Prediction",
+          "117": "Connect To Friends",
+          "118": "Fitness Functions",
+          "119": "Time To Sport",
+          "120": "Calories Tracker",
+          "121": "Work&Life Balance",
+          "122": "Optimize Scheduling",
+          "123": "Optimize Concentration",
+          "124": "Business Functions",
+          "125": "Automatic Task Scheduling",
+          "126": "Workflow Tracking",
+          "127": "Homing",
+          "128": "Single-Homed",
+          "129": "Multi-Homed",
+          "130": "Fitness Improver",
+          "131": "Life Improver",
+          "132": "Business Improver",
+          "133": "Existing Customer Base",
+          "134": "Brand Customer Base",
+          "135": "OS Customer Base",
+          "136": "Facbook Ads",
+          "137": "Progress Discovery",
+          "138": "Friend Challenges",
+          "139": "Facebook Groups",
+          "140": "Online Communities",
+          "141": "Social Media Ads",
+          "142": "Company Branding",
+          "143": "Review Reactions",
+          "144": "Update with OS",
+          "145": "Cross-Financed",
+          "146": "Hardware",
+          "147": "Software",
+          "148": "Normal Account",
+          "149": "Professional Account",
+          "150": "Business Account",
+          "151": "Third-Party Developer",
+          "152": "Developer API",
+          "154": "Medium Scope",
+          "155": "Intelligent Flow Planer",
+          "156": "Free Usage",
+          "157": "Connect To Calender",
+          "158": "Online Communities",
+          "159": "Facebook Groups",
+          "160": "Included in OS",
+          "161": "No Purchase",
+          "162": "Influencer",
+          "163": "Influencer Marketing"
+        },
+        "businessModelMap": {
+          "1": "Market Analysis",
+          "2": "Competitor Analysis: Microsoft Todo",
+          "3": "Competitor Analysis: Wunderlist",
+          "4": "Competitor Analysis: Any.do",
+          "5": "Competitor Analysis: Todoist",
+          "6": "Competitor Analysis: Apples iOS",
+          "7": "Competitor Analysis Googles Android",
+          "8": "Niche Analysis",
+          "9": "Customer Analysis: Fitness Improver",
+          "10": "Customer Analysis: Work&Life Improver",
+          "11": "Customer Analysis: Business Improver"
+        }
+      }]);
 
     }, error => {
       return error;
