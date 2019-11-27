@@ -38,17 +38,24 @@ export class BusinessModelViewComponent implements OnInit {
   /**
    * Create a new instance of the BusinessModelViewComponent.
    * @param route ActivatedRoute
+   * @param router Router
    * @param pouchDBServer PouchdbService
    * @param modalService NgbModal
    * @param fb FormBuilder
    */
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private pouchDBServer: PouchdbService,
     private modalService: NgbModal,
     private fb: FormBuilder
 
-  ) { }
+  ) { 
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+
+  }
 
   /**
    * Initialize the component.
@@ -183,6 +190,32 @@ export class BusinessModelViewComponent implements OnInit {
     }, error => {
       console.log("UpdateBusinessModel: " + error);
     });
+  }
+
+  /**
+   * Create adaptation of the business model.
+   */
+  createAdaptation() {
+      var nameSplit = this.businessModelName.split(" - Adaptation#")
+      var adaptationName;
+      console.log(nameSplit.length)
+      if(nameSplit.length > 1 && parseInt(nameSplit[nameSplit.length -1]) != NaN) {
+        adaptationName = nameSplit[0]+" - Adaptation#"+(parseInt(nameSplit[nameSplit.length -1]) + 1);
+      } else {
+        adaptationName = nameSplit[0]+" - Adaptation#1"
+      }
+      
+      this.pouchDBServer.adaptBusinessModel(this.featureModelId, this.businessModelId, adaptationName).then(result => {
+        this.pouchDBServer.getFeatureModel(this.featureModelId).then(result => {
+          var businessModelKeys = Object.keys(result['businessModelMap']);
+          this.router.navigateByUrl('/businessmodelview/'+this.featureModelId+'/'+businessModelKeys[businessModelKeys.length - 1]);
+        }, error => {
+          console.log("CreateAdaptation (inner): ");
+
+        });
+      }, error => {
+        console.log("CreateAdaptation: ")
+      })
   }
 
   /**
@@ -347,6 +380,8 @@ export class BusinessModelViewComponent implements OnInit {
   getUnselectedFeatures(feature: any): any[] {
     var returnFeatures = []
 
+    console.log(JSON.stringify(feature))
+    
     for (var i = 0; i < feature.features.length; i++) {
       if (!feature.features[i]['businessModelIds'].includes(parseInt(this.businessModelId))) {
         returnFeatures.push(feature.features[i])

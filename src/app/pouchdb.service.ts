@@ -24,23 +24,15 @@ export class PouchdbService {
 
     // Create a PouchDB connection
     PouchDB.plugin(PouchDBFind)
+    // Change to this.db = new PouchDB('http://server:port/yourdatabase'); to connect to a couchdb database
     this.db = new PouchDB(this.databaseName); 
 
     // Check database connection
     this.db.info().then(function (info) {
-      console.log("Database connection: " + info);
-    })
-
-    this.getFeatureModelList().then(result => {
-      console.log("Res: "+JSON.stringify(result));
-    }, error => {
-      console.log("Err: "+error);
+      console.log("Database connection: " + JSON.stringify(info));
     })
   }
 
-  /**
-   * Get the information about the database.
-   */
   getDatabaseInfo() {
     return this.db.info();
   }
@@ -219,6 +211,54 @@ export class PouchdbService {
 
       result['businessModelMap'][businessModelId] = name;
 
+      return this.db.put(result);
+    });
+  }
+
+  /**
+   * Adapt an existing business model.
+   * @param featureModelId id of the current feature model
+   * @param businessModelId id of the business model
+   * @param adaptationName name of the adapted business model
+   */
+  adaptBusinessModel(featureModelId: string, businessModelId: string, adaptationName: string){
+    return this.db.get(featureModelId).then(result => {
+      var result = result;
+      var newBusinessModelId = result['businessModelIdCounter'];
+
+      // Create new business model
+      for (var i = 0; i < result['features'].length; i++) {
+        result['features'][i]['businessModelIds'].push(result['businessModelIdCounter']);
+      }
+
+      result['businessModelMap'][result['businessModelIdCounter']] = adaptationName;
+      result['businessModelIdCounter'] = result['businessModelIdCounter'] + 1;
+      
+      // Traverse features
+      var featureStack: any[] = []
+
+      for (var i = 0; i < result['features'].length; i++) {
+        var model = result['features'][result['features'].length - 1 - i];
+        featureStack.push(model);
+      }
+
+      // Select single feature from the stack
+      while (featureStack.length > 0) {
+        var f = featureStack.pop();
+        if(f['businessModelIds'].includes(parseInt(businessModelId)) && !f['businessModelIds'].includes(parseInt(newBusinessModelId))) {
+          f['businessModelIds'].push(newBusinessModelId)
+        } 
+
+        // Add new features to the stack
+        if (f.features) {
+          for (var i = 0; i < f.features.length; i++) {
+            var model = f.features[f.features.length - 1 - i];
+            featureStack.push(model);
+          }
+        }
+      }
+      //console.log(JSON.stringify(result));
+      //return result;
       return this.db.put(result);
     });
   }
@@ -692,10 +732,12 @@ export class PouchdbService {
   }
 
   /**
-   * Destroy the old database and generate a new one with default data.
+   * Add default data to the database.
    */
   public addDefaultData() {
+    console.log("Inner default db")
     return this.db.destroy().then(result => {
+      console.log("Result: "+JSON.stringify(result))
       this.db = new PouchDB(this.databaseName);
 
       return this.db.post({
@@ -1255,10 +1297,7 @@ export class PouchdbService {
       });
 
     }, error => {
-      // error occurred
-      console.log("Add Default Data")
-    });
-    console.log("Add Default Data")
-    
+      return error;
+    });    
   }
 }
