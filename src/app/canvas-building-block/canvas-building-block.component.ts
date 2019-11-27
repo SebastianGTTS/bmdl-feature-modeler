@@ -65,7 +65,6 @@ export class CanvasBuildingBlockComponent {
    * @param item the item
    */
   includes(array: any[], item: any): Boolean{
-   
     if(array && array.includes(parseInt(item))) {
       return true;
     }

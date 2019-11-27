@@ -1,12 +1,12 @@
 <div class="nav-scroller bg-white shadow-sm">
     <nav class="nav nav-underline">
-        <a class="nav-link active" href="#">{{featureModel.name}}</a>
+        <a *ngIf="featureModel" class="nav-link active" href="#">{{featureModel.name}}</a>
         <a *ngFor="let bm of businessModelList" class="nav-link"
         [routerLink]="['/businessmodelview', featureModel._id, bm.id]">{{bm.name}}</a>
     </nav>
 </div>
 
-<main role="main" class="container">
+<main *ngIf="featureModel" role="main" class="container">
     <!-- List Features -->
     <div class="my-3 p-3 bg-white rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-2 mb-0">Feature Model of {{featureModel.name}}</h6>

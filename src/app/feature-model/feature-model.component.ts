@@ -58,10 +58,12 @@ export class FeatureModelComponent {
   }
 
   /**
-   * Reset the database to the default data
+   * Reset the local database.
    */
   resetDatabase(): void {
+    console.log("Delete Database")
     this.pouchDBServer.addDefaultData().then(result => {
+      console.log("Result: "+result)
       this.refreshFeatureModelList();
     }, error => {
       console.log("Default Constructor (inner): " + error);

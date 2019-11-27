@@ -142,12 +142,12 @@
 
 <div class="nav-scroller bg-white shadow-sm">
     <nav class="nav nav-underline">
-        <a class="nav-link" [routerLink]="['/featuremodelview', featureModel._id]">View {{featureModel.name}}</a>
-        <a class="nav-link active" [routerLink]="['/featuremodel', featureModel._id]">Edit {{featureModel.name}}</a>
+        <a *ngIf="featureModel" class="nav-link" [routerLink]="['/featuremodelview', featureModel._id]">View {{featureModel.name}}</a>
+        <a *ngIf="featureModel" class="nav-link active" [routerLink]="['/featuremodel', featureModel._id]">Edit {{featureModel.name}}</a>
     </nav>
 </div>
 
-<main role="main" class="container">
+<main *ngIf="featureModel" role="main" class="container">
     <!-- List of Features -->
     <div class="my-3 p-3 bg-white rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-2 mb-0">Feature Model List</h6>
@@ -281,7 +281,7 @@
                 <div class="form-group row">
                     <div class="col-sm-12">
                         <button type="submit" class="btn btn-sm btn-dark btn-block"
-                            [disabled]="!dependencyForm.valid">Add Dependecy</button>
+                            [disabled]="!dependencyForm.valid">Add Dependency</button>
                     </div>
                 </div>
             </form>
